@@ -8,154 +8,108 @@
 
 /* PAGE */
 body {
-  background: linear-gradient(180deg, #020617, #020617);
+  background: radial-gradient(circle at top, #0a2540, #020617);
   color: #e5e7eb;
   text-align: center;
-  min-height: 100vh;
 }
 
 /* HERO */
 .hero {
-  padding: 90px 20px;
-  background: linear-gradient(135deg, #2563eb, #22d3ee);
+  padding: 80px 20px 60px;
+  background: linear-gradient(135deg, #1e40af, #38bdf8);
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 900;
 }
 
 .hero p {
-  margin-top: 15px;
+  margin-top: 14px;
   font-size: 1.2rem;
-  opacity: 0.95;
-}
-
-/* SLIDESHOW CONTAINER */
-.slideshow {
   max-width: 900px;
-  margin: 60px auto;
-  padding: 35px;
-  background: #020617;
+  margin-inline: auto;
+}
+
+/* POSTER GRID */
+.poster {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* CARDS */
+.card {
+  background: linear-gradient(180deg, #020617, #020617);
   border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.65);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* SLIDES */
-.slides {
-  display: none;
-  animation: fadeSlide 0.8s ease;
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.9);
 }
 
-.slides h2 {
-  font-size: 1.8rem;
-  color: #38bdf8;
-  margin-bottom: 14px;
+.card h2 {
+  color: #60a5fa;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
 }
 
-.slides p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 22px;
-  color: #e5e7eb;
+.card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
 
 /* IMAGE SUPPORT */
-.slides img {
+.card img {
   width: 100%;
-  max-height: 320px;
-  object-fit: cover;
+  max-height: 200px;
+  object-fit: contain;
   border-radius: 14px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-  animation: imageReveal 0.9s ease;
-}
-
-/* SLIDE CONTROLS */
-.controls {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.controls button {
-  background: linear-gradient(135deg, #2563eb, #38bdf8);
-  border: none;
-  color: white;
-  padding: 12px 26px;
-  font-size: 1.3rem;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
-
-.controls button:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7);
+  background: #ffffff;
+  padding: 10px;
+  animation: imagePop 0.9s ease;
 }
 
 /* FOOTER */
 footer {
-  margin: 50px 0 30px;
-  font-size: 0.9rem;
+  margin: 40px 0 30px;
+  font-size: 0.85rem;
   opacity: 0.6;
 }
 
 /* ANIMATIONS */
 .fade-in {
-  animation: heroDrop 1.2s ease forwards;
+  animation: fadeDown 1.3s ease forwards;
 }
 
-.delay {
-  animation-delay: 0.3s;
+.slide-up {
+  animation: slideUp 1s ease forwards;
 }
 
-@keyframes heroDrop {
-  from {
-    opacity: 0;
-    transform: translateY(-25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.delay { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes imageReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* MOBILE TUNING */
-@media (max-width: 600px) {
-  .slideshow {
-    margin: 40px 15px;
-    padding: 25px;
-  }
-
-  .slides h2 {
-    font-size: 1.5rem;
-  }
-
-  .slides img {
-    max-height: 220px;
-  }
+@keyframes imagePop {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
